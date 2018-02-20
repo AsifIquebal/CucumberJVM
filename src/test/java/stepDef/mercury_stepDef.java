@@ -15,14 +15,11 @@ import java.util.List;
 public class mercury_stepDef extends BaseClass {
 
     WebDriver driver;
-    //DriverFactory driverFactory = new DriverFactory();
     LoginPage loginPage;
     FlightFinderPage flightFinderPage;
 
     @Given("^User open firefox browser$")
     public void user_open_firefox_browser() throws Throwable {
-        //driver = driverFactory.createDriver();
-        System.setProperty("webdriver.gecko.driver", "C:/Selenium/drivers/geckodriver-v0.16.1-win64/geckodriver.exe");
         driver = new FirefoxDriver();
     }
 

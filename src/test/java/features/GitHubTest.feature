@@ -6,4 +6,3 @@ Feature: GitHub application testing
     Then user enters login id
     Then user enters password
     And user clicks on signin button
-    #And close the browser

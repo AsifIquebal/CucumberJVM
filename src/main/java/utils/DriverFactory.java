@@ -10,7 +10,7 @@ public class DriverFactory {
     public static WebDriver driver = null;
 
     public WebDriver createDriver(){
-        System.setProperty("webdriver.gecko.driver", "C:/Selenium/drivers/geckodriver-v0.16.1-win64/geckodriver.exe");
+        System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
         driver = new FirefoxDriver();
         return driver;
     }

@@ -6,8 +6,9 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        //features="src/test/java/resources/features/GitHubTest.feature",
-        features = "src/test/java/resources/features/mercury.feature",
+        //features="CucumberJVM/src/test/java/resources/features/GitHubTest.feature",
+        //features = "src/test/java/features/mercury.feature",
+        features = "CucumberJVM/src/test/java/features/mercury.feature",
         glue = "steps",
         plugin = {"pretty", "html:target/cucumber-reports"}
         // use plugin instead, as format has been deprecated

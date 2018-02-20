@@ -7,15 +7,14 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.chrome.ChromeDriver;
+import utils.DriverFactory;
 
 import java.io.IOException;
 
-/**
- * Created by user on 15-May-17.
- */
 public class Hook {
 
-    private WebDriver driver;
+    public WebDriver driver;
 
     @Before
     public void setUp(Scenario scenario){
@@ -25,6 +24,8 @@ public class Hook {
 
     @Before
     public void beforeScenario() {
+        //System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
+        //driver = new ChromeDriver();
         //driver = new DriverFactory().createDriver();
         System.out.println("this will run before the actual scenario");
     }
@@ -35,7 +36,7 @@ public class Hook {
         System.out.println("====================================================================");
     }
 
-    @After
+    /*@After
     public void embedScreenshot(Scenario scenario) throws IOException {
 
         if (scenario.isFailed()) {
@@ -51,5 +52,5 @@ public class Hook {
                 cce.printStackTrace();
             }
         }
-    }
+    }*/
 }

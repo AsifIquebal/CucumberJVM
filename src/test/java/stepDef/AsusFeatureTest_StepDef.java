@@ -19,11 +19,6 @@ public class AsusFeatureTest_StepDef {
 
     @Given("^user is on selenium practice home page$")
     public void user_on_Selenium_Practice_Page() {
-        System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
-        driver = new FirefoxDriver();
-        /*System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
-        driver = new ChromeDriver();*/
-        //driver.get("http://localhost:63342/cucumberJVM/selPractice.htm");
         driver.get("http://localhost:63342/Selenium/CucumberJVM/selPractice.htm?_ijt=n5lhlrghgnibi1jjie0q437i8l");
     }
 
@@ -107,14 +102,4 @@ public class AsusFeatureTest_StepDef {
             return "Other";
         }
     }
-
-    @After
-    public void cleanUp()
-    {
-        driver.quit();
-    }
-
-
-
-
 }

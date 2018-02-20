@@ -1,6 +1,7 @@
 package pageObjects;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.Before;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -17,12 +18,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Created by user on 09-Dec-16.
- */
 public class BaseClass {
 
     public WebDriver driver;
+
 
     @BeforeClass
     @Parameters("browser")
@@ -33,34 +32,12 @@ public class BaseClass {
         } else if (browser.equals("firefox")) {
             System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
             driver = new FirefoxDriver();
-        } else if (browser.equals("ie")){
-            System.setProperty("webdriver.ie.driver", "src/main/resources/drivers/IEDriverServer.exe");
-            driver = new InternetExplorerDriver();
         }
-        //String log4jPath = "log4j.properties";
-        //PropertyConfigurator.configure(log4jPath);
     }
 
-    /*@BeforeClass
-    @Parameters("browser")
-    public WebDriver launchBrowser(@Optional("firefox") String browser) {
-        if (browser.equalsIgnoreCase("Chrome")) {
-            System.setProperty("webdriver.chrome.driver", "C:/Selenium/drivers/chromedriver_win32/chromedriver.exe");
-            driver = new ChromeDriver();
-        } else if (browser.equals("firefox")) {
-            System.setProperty("webdriver.gecko.driver", "C:/Selenium/drivers/geckodriver-v0.16.1-win64/geckodriver.exe");
-            driver = new FirefoxDriver();
-        } else if (browser.equals("ie")){
-            System.setProperty("webdriver.ie.driver", "C:/Selenium/drivers/IEDriverServer_Win32_2.53.1/IEDriverServer.exe");
-            driver = new InternetExplorerDriver();
-        }
-        return driver;
-    }*/
-
-    public WebDriver getDriver() {
-        return driver;
+    public void launchApplication(){
+        driver.get("https://github.com/login");
     }
-
 
     @AfterMethod
     public void getScreenShot(ITestResult result) throws IOException {
