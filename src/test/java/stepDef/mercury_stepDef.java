@@ -12,9 +12,6 @@ import pageObjects.LoginPage;
 
 import java.util.List;
 
-/**
- * Created by user on 10-May-17.
- */
 public class mercury_stepDef extends BaseClass {
 
     WebDriver driver;
