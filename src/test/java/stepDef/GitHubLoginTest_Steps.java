@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import pageObjects.gitHubPages.LoginPage;
 
 
-public class GitHubLoginTest_StepDef{
+public class GitHubLoginTest_Steps {
 
     public WebDriver driver;
     LoginPage loginPage;
@@ -36,6 +36,7 @@ public class GitHubLoginTest_StepDef{
     @And("^user clicks on signin button$")
     public void user_clicks_on_signin_button() {
         loginPage.clickOnSignInButton();
+        driver.quit();
     }
 
 }

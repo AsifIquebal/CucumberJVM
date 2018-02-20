@@ -7,9 +7,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features="CucumberJVM/src/test/java/features/GitHubTest.feature",
+        // facing issue with feature file location
+        features="src/test/java/features/GitHubTest.feature",
         glue = "stepDef",
         plugin = {"pretty", "html:target/cucumber-reports"}
 )
-public class GitHub_CukeTest extends AbstractTestNGCucumberTests {
+public class GitHub_CukeTest {
 }
