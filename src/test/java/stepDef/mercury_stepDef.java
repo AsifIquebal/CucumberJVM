@@ -19,7 +19,8 @@ public class mercury_stepDef extends BaseClass {
     FlightFinderPage flightFinderPage;
 
     @Given("^User open firefox browser$")
-    public void user_open_firefox_browser() throws Throwable {
+    public void user_open_firefox_browser() {
+        System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
         driver = new FirefoxDriver();
     }
 
@@ -32,41 +33,31 @@ public class mercury_stepDef extends BaseClass {
     @Given("^user opens mercury tour application$")
     public void user_opens_mercury_tour_application() throws Throwable {
         Assert.assertEquals("Sign-on: Mercury Tours", driver.getTitle());
-        // intentionally failing
-        //Assert.assertEquals("Sign-in: Mercury Tours", driver.getTitle());
     }
 
     @Given("^user enters \"([^\"]*)\" on Username$")
     public void user_enters_on_Username(String arg1) throws Throwable {
-        //driver.findElement(By.xpath("//input[@name='userName']")).sendKeys(arg1);
-        //LoginPage loginPage = new LoginPage(driver);
         loginPage.typeUserName(arg1);
     }
 
     @Given("^user enters \"([^\"]*)\" on Password$")
     public void user_enters_on_Password(String arg1) throws Throwable {
-        //driver.findElement(By.xpath("//input[@name='password']")).sendKeys(arg1);
-        //LoginPage loginPage = new LoginPage(driver);
         loginPage.typePassword(arg1);
     }
 
     @Given("^user clicks on Submit button$")
     public void user_clicks_on_Submit_button() throws Throwable {
-        //driver.findElement(By.xpath("//input[@name='login']")).click();
-        //LoginPage loginPage = new LoginPage(driver);
         flightFinderPage = loginPage.clickOnLoginButton();
     }
 
     @Then("^user perform some action on Flight Finder Page$")
-    public void user_perform_some_action_on_Flight_Finder_Page() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
+    public void user_perform_some_action_on_Flight_Finder_Page() {
         flightFinderPage
                 .clickOneWayRadioButton()
                 .selectPassengerCount("2")
                 .selectFromPort("London")
                 .selectToPort("Frankfurt")
                 .selectServiceClassBussiness();
-
     }
 
     @Then("^user clicks on Continue button$")
@@ -88,7 +79,6 @@ public class mercury_stepDef extends BaseClass {
 
     @Given("^user greeting$")
     public void user_greeting() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         System.out.println("Scenario Outline Demo");
     }
 
@@ -109,19 +99,16 @@ public class mercury_stepDef extends BaseClass {
 
     @Given("^My name is \"([^\"]*)\"$")
     public void my_name_is(String arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         System.out.println("Name: " + arg1);
     }
 
     @Given("^I am (\\d+) years old$")
     public void i_am_years_old(int arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         System.out.println("Year: " + arg1);
     }
 
     @Given("^I have been to \"(.+)\" for work$")
     public void i_have_been_to_for_work(List<String> list) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         for (int i=0; i<list.size(); i++){
             System.out.println("Place " + (i+1) + ": " + list.get(i));
         }

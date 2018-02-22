@@ -16,3 +16,17 @@ Feature: Cucumber Learning Session
       | Tiger Nixon     | System Architect | Edinburgh     |
       | Garrett Winters | Accountant       | Tokyo         |
       | Asif 1          | Tester           | San Francisco |
+
+  Scenario Outline: Scenario Outline Demo
+    Given user greeting
+    Then print member name "<col1>"
+    Then print member location "<col2>"
+    Examples:
+      |col1    |col2    |
+      |Asif    |Pune    |
+      |Picasso |Chennai |
+
+  Scenario: String, integer, list demo
+    Given My name is "Asif"
+    And I am 32 years old
+    And I have been to : Kolkata, Bhubaneswar, Pune for work
