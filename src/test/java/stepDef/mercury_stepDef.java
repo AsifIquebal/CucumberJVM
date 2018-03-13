@@ -6,7 +6,7 @@ import cucumber.api.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import pageObjects.BaseClass;
+import pageObjects.base.BaseClass;
 import pageObjects.FlightFinderPage;
 import pageObjects.LoginPage;
 
