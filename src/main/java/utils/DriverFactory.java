@@ -7,7 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
  * Created by user on 13-May-17.
  */
 public class DriverFactory {
-    public static WebDriver driver = null;
+    public WebDriver driver = null;
 
     public WebDriver createDriver(){
         System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");

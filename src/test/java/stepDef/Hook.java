@@ -16,13 +16,13 @@ public class Hook {
 
     public WebDriver driver;
 
-    @Before
+    //@Before
     public void setUp(Scenario scenario){
         System.out.println("Starting: " + scenario.getName());
         System.out.println("====================================================================");
     }
 
-    @Before
+    //@Before
     public void beforeScenario() {
         //System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
         //driver = new ChromeDriver();
@@ -30,8 +30,9 @@ public class Hook {
         System.out.println("this will run before the actual scenario");
     }
 
-    @After
+    //@After
     public void tearDown(Scenario scenario){
+        //driver.quit();
         System.out.println("Ending: " + scenario.getName());
         System.out.println("====================================================================");
     }
