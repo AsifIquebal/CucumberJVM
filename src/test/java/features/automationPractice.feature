@@ -27,5 +27,4 @@ Feature: Automation Practice Application
     Examples:
     | Search_Query | number_of_products |
     | Sari         | 0                  |
-    | Jama         | 0                  |
     | CHIFFON      | 2                  |
