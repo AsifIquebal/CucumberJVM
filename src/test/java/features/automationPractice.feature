@@ -18,3 +18,14 @@ Feature: Automation Practice Application
     And user create a new address
     Then user delete the address
     Then user log out of the application
+
+  Scenario Outline: Search for products
+    Given user is on home page
+    When user search for <Search_Query>
+    Then user get <number_of_products> product as result
+
+    Examples:
+    | Search_Query | number_of_products |
+    | Sari         | 0                  |
+    | Jama         | 0                  |
+    | CHIFFON      | 2                  |
