@@ -6,14 +6,12 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features="CucumberJVM/src/test/java/features/automationPractice.feature",
-        //features = "src/test/java/features/mercury.feature",
-        // facing issue with feature file location
-        //features="src/test/java/features/GitHubTest.feature",
+        features="CucumberJVM/src/test/java/features/",
         glue = "stepDef",
         plugin = {"pretty", "html:target/cucumber-reports"},
-        dryRun = true,
-        strict = true
+        tags={"@asus,@autprac"}
+        /*dryRun = true,
+        strict = true*/
         // use plugin instead, as format has been deprecated
         /*plugin = {"pretty", "json:FolderName/cucumber.json"}
         plugin= {"pretty", "junit:FolderNam0e/cucumber.xml"}
@@ -25,7 +23,7 @@ import org.junit.runner.RunWith;
                 , "junit:FolderNam0e/cucumber.xml"
                 , "html:FolderName/cucumber.html"
         }*/
-        //tags={"@mercury"}
+
 )
-public class AutomationPractice_CukeTest {
+public class TestSuite_CukeTest {
 }

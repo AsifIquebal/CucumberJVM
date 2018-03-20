@@ -1,10 +1,11 @@
+@asus
 Feature: Cucumber Learning Session
 # Comment
   Scenario: Cucumber Learning Session Scenarios
     Given user is on selenium practice home page
     Then user enters "CGroup" on text box
     Then user selects value from Select drop down
-#    Then click on Home
+    Then click on Home
     Then user wants to know the OS
     Then user enters "asif" on username
     And user enters "123" on password
@@ -29,4 +30,4 @@ Feature: Cucumber Learning Session
   Scenario: String, integer, list demo
     Given My name is "Asif"
     And I am 32 years old
-    And I have been to : Kolkata, Bhubaneswar, Pune for work
+    And I have been to : "Kolkata, Bhubaneswar, Pune" for work

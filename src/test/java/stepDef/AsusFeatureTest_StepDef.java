@@ -1,35 +1,54 @@
 package stepDef;
 
+import base.BaseUtil;
 import cucumber.api.DataTable;
 import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.BeforeClass;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AsusFeatureTest_StepDef {
-    WebDriver driver = null;
+public class AsusFeatureTest_StepDef extends BaseUtil{
+
+    private BaseUtil baseUtil;
+
+    public AsusFeatureTest_StepDef(BaseUtil baseUtil) {
+        this.baseUtil = baseUtil;
+    }
+
+    /*WebDriver driver;
+    @Before
+    public void myDriver(){
+        System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
+        driver = new ChromeDriver();
+        //driver = new DriverFactory().createDriver();
+    }*/
+
 
     @Given("^user is on selenium practice home page$")
     public void user_on_Selenium_Practice_Page() {
-        driver.get("http://localhost:63342/Selenium/CucumberJVM/selPractice.htm?_ijt=n5lhlrghgnibi1jjie0q437i8l");
+        baseUtil.driver.get("http://localhost:63343/Selenium/CucumberJVM/selPractice.htm?_ijt=47cm8ppk2lsnasqsjosc0pmqbb");
     }
 
     @Then("^user enters \"(.*?)\" on text box$")
     public void enter_text(String text) {
-        driver.findElement(By.id("textinput")).sendKeys(text);
+        baseUtil.driver.findElement(By.id("textinput")).sendKeys(text);
     }
 
     @Then("^user selects value from Select drop down$")
     public void selectValue() throws Exception {
-        Select dd = new Select(driver.findElement(By.name("PASAM")));
+        Select dd = new Select(baseUtil.driver.findElement(By.name("PASAM")));
         List<WebElement> ddl = dd.getOptions();
         for(int i=0 ; i<ddl.size() ; i++)
         {
@@ -40,17 +59,17 @@ public class AsusFeatureTest_StepDef {
         Thread.sleep(2000);
         dd.selectByIndex(ddl.size()-1);
 
-        driver.findElement(By.xpath("//select[@id='PASAM1']/option[@value='amlu' and .='Amlan']")).click();
+        baseUtil.driver.findElement(By.xpath("//select[@id='PASAM1']/option[@value='amlu' and .='Amlan']")).click();
     }
 
-    /*@Then("click on Home")
+    @Then("click on Home")
     public void clickHome()throws Exception
     {
-        WebElement homeLink = driver.findElement(By.xpath(".//a[contains(text(),'Home')]"));
-        Actions act1 = new Actions(driver);
+        WebElement homeLink = baseUtil.driver.findElement(By.xpath(".//a[contains(text(),'Home')]"));
+        Actions act1 = new Actions(baseUtil.driver);
         Thread.sleep(3000);
         act1.moveToElement(homeLink).perform();
-    }*/
+    }
 
     @Then("^user wants to know the OS$")
     public void getOS()
@@ -61,13 +80,13 @@ public class AsusFeatureTest_StepDef {
     @Then("^user enters \"(.*?)\" on username$")
     public void setUserName(String text)
     {
-        driver.findElement(By.id("userId")).sendKeys(text);
+        baseUtil.driver.findElement(By.id("userId")).sendKeys(text);
     }
 
     @And("^user enters \"([0-9]*)\" on password$")
     public void setPasswordName(int value)
     {
-        driver.findElement(By.id("passWd")).sendKeys(""+value);
+        baseUtil.driver.findElement(By.id("passWd")).sendKeys(""+value);
     }
 
     @Then("^we verify following data exists$")
@@ -102,4 +121,37 @@ public class AsusFeatureTest_StepDef {
             return "Other";
         }
     }
+
+    @Given("^user greeting$")
+    public void user_greeting() {
+        System.out.println("User Greeting step..");
+    }
+
+    @Then("^print member name \"([^\"]*)\"$")
+    public void print_member_name(String arg1) {
+        System.out.println("Member: " + arg1);
+    }
+
+    @Then("^print member location \"([^\"]*)\"$")
+    public void print_member_location(String arg1) {
+        System.out.println("Member Location: " + arg1);
+    }
+
+    @Given("^My name is \"([^\"]*)\"$")
+    public void my_name_is(String arg1) {
+        System.out.println("Name: " + arg1);
+    }
+
+    @Given("^I am (\\d+) years old$")
+    public void i_am_years_old(int arg1) {
+        System.out.println("Age: " + arg1);
+    }
+
+    @Given("^I have been to : \"(.+)\" for work$")
+    public void i_have_been_to_Kolkata_Bhubaneswar_Pune_for_work(List<String> list) {
+        System.out.println("Places I've been");
+        list.forEach(elem-> System.out.println(elem));
+    }
+
+
 }
