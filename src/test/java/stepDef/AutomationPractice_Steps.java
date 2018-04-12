@@ -92,4 +92,6 @@ public class AutomationPractice_Steps extends BaseClass{
         System.out.println("Received value: " + arg1);
         // Write code here that turns the phrase above into concrete actions
     }
+
+
 }

@@ -1,27 +1,24 @@
 package stepDef;
 
-import base.BaseUtil;
-import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class Hook1 extends BaseUtil{
+public class Hook1{
 
-    private BaseUtil baseUtil;
-
-    public Hook1(BaseUtil baseUtil) {
-        this.baseUtil = baseUtil;
-    }
-
-    @Before
+    public WebDriver driver;
+    //@Before
     public void setUp(){
-        System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
-        baseUtil.driver = new ChromeDriver();
+        System.out.println("Before HOOK");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
+        //System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
+        driver = new ChromeDriver();
     }
 
-    @After
+    //@After
     public void tearDown(){
-        baseUtil.driver.quit();
+        System.out.println("After HOOK");
+        driver.quit();
     }
 }

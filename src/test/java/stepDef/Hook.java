@@ -15,7 +15,7 @@ import java.io.IOException;
 public class Hook {
 
     public WebDriver driver;
-
+    
     //@Before
     public void setUp(Scenario scenario){
         System.out.println("Starting: " + scenario.getName());

@@ -1,7 +1,7 @@
 package stepDef;
 
-import base.BaseUtil;
 import cucumber.api.DataTable;
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
@@ -11,113 +11,105 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.annotations.BeforeClass;
+import singleTonBase.SingleTonBase;
 
-import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class AsusFeatureTest_StepDef extends BaseUtil{
+public class AsusFeatureTest_StepDef{
 
-    private BaseUtil baseUtil;
+    WebDriver driver;
 
-    public AsusFeatureTest_StepDef(BaseUtil baseUtil) {
-        this.baseUtil = baseUtil;
+    @Before
+    public void steUp(){
+        driver = SingleTonBase.getDriver();
     }
 
-    /*WebDriver driver;
-    @Before
-    public void myDriver(){
-        System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
-        driver = new ChromeDriver();
-        //driver = new DriverFactory().createDriver();
-    }*/
+    @After
+    public void tearDown(Scenario scenario){
+        System.out.println("Scenarion: " + scenario.getName() + ", Status: " + scenario.getStatus());
 
+        SingleTonBase.closeBrowser();
+    }
 
     @Given("^user is on selenium practice home page$")
     public void user_on_Selenium_Practice_Page() {
-        baseUtil.driver.get("http://localhost:63343/Selenium/CucumberJVM/selPractice.htm?_ijt=47cm8ppk2lsnasqsjosc0pmqbb");
+        String url = "http://localhost:63342/Selenium/CucumberJVM/selPractice.htm?_ijt=mbu7uh6u6o03f4jqni77i48clr";
+        driver.get(url);
+
     }
 
     @Then("^user enters \"(.*?)\" on text box$")
     public void enter_text(String text) {
-        baseUtil.driver.findElement(By.id("textinput")).sendKeys(text);
+        driver.findElement(By.id("textinput")).sendKeys(text);
     }
 
     @Then("^user selects value from Select drop down$")
     public void selectValue() throws Exception {
-        Select dd = new Select(baseUtil.driver.findElement(By.name("PASAM")));
+        Select dd = new Select(driver.findElement(By.name("PASAM")));
         List<WebElement> ddl = dd.getOptions();
-        for(int i=0 ; i<ddl.size() ; i++)
-        {
+        for(int i=0 ; i<ddl.size() ; i++) {
             System.out.println("Dropdown: "+(i+1)+ " Option: "+ ddl.get(i).getText()+" Status: "+ddl.get(i).isSelected());
         }
         Thread.sleep(2000);
         dd.selectByIndex(1);
         Thread.sleep(2000);
         dd.selectByIndex(ddl.size()-1);
-
-        baseUtil.driver.findElement(By.xpath("//select[@id='PASAM1']/option[@value='amlu' and .='Amlan']")).click();
+        driver.findElement(By.xpath("//select[@id='PASAM1']/option[@value='amlu' and .='Amlan']")).click();
     }
 
     @Then("click on Home")
-    public void clickHome()throws Exception
-    {
-        WebElement homeLink = baseUtil.driver.findElement(By.xpath(".//a[contains(text(),'Home')]"));
-        Actions act1 = new Actions(baseUtil.driver);
+    public void clickHome()throws Exception {
+        WebElement homeLink = driver.findElement(By.xpath(".//a[contains(text(),'Home')]"));
+        Actions act1 = new Actions(driver);
         Thread.sleep(3000);
         act1.moveToElement(homeLink).perform();
     }
 
     @Then("^user wants to know the OS$")
-    public void getOS()
-    {
+    public void getOS() {
         System.out.println("OS is: "+OSDetector());
     }
 
     @Then("^user enters \"(.*?)\" on username$")
-    public void setUserName(String text)
-    {
-        baseUtil.driver.findElement(By.id("userId")).sendKeys(text);
+    public void setUserName(String text) {
+        driver.findElement(By.id("userId")).sendKeys(text);
     }
 
     @And("^user enters \"([0-9]*)\" on password$")
-    public void setPasswordName(int value)
-    {
-        baseUtil.driver.findElement(By.id("passWd")).sendKeys(""+value);
+    public void setPasswordName(int value) {
+        driver.findElement(By.id("passWd")).sendKeys(""+value);
     }
 
     @Then("^we verify following data exists$")
-    public void dataVerification(DataTable dataDetails)
-    {
-        List<List<String>> data = dataDetails.raw();
+    public void dataVerification(DataTable dataTable){
+        // raw(): Returns a List of List of String.
+        List<List<String>> data = dataTable.raw();
         System.out.println(data.get(1).get(1));
         System.out.println(data);
+        
+
     }
 
-    public static String OSDetector ()
-    {
+    public static String OSDetector (){
         String os = System.getProperty("os.name").toLowerCase();
-        if (os.contains("win"))
-        {
+        if (os.contains("win")){
             return "Windows";
         }
-        else if (os.contains("nux") || os.contains("nix"))
-        {
+        else if (os.contains("nux") || os.contains("nix")){
             return "Linux";
         }
-        else if (os.contains("mac"))
-        {
+        else if (os.contains("mac")){
             return "Mac";
         }
-        else if (os.contains("sunos"))
-        {
+        else if (os.contains("sunos")){
             return "Solaris";
         }
-        else
-        {
+        else{
             return "Other";
         }
     }
@@ -152,6 +144,43 @@ public class AsusFeatureTest_StepDef extends BaseUtil{
         System.out.println("Places I've been");
         list.forEach(elem-> System.out.println(elem));
     }
+
+    @Given("^the following datatable and convert to list$")
+    public void the_following_datatable_and_convert_to_list(DataTable dataTable) {
+        // raw(): Returns a List of List of String.
+        List<List<String>> data = dataTable.raw();
+        System.out.println(data.get(1).get(1));
+        System.out.println(data);
+    }
+
+    @Given("^the following datatable and convert to map")
+    public void the_following_datatable_and_convert_to_map(DataTable dataTable) {
+        Map<String, String> map = dataTable.asMap(String.class, String.class);
+        Set<Map.Entry<String, String>> set = map.entrySet();
+        Iterator iterator = set.iterator();
+        while(iterator.hasNext()) {
+            Map.Entry entry = (Map.Entry)iterator.next();
+            System.out.print("key is: "+ entry.getKey() + " & Value is: ");
+            System.out.println(entry.getValue());
+        }
+        System.out.println("==============================");
+        map.forEach((a,b)-> System.out.println(a+":"+b));
+    }
+    @Given("^the following datatable and convert to list automatically$")
+    public void the_following_datatable_and_convert_to_list_automatically(List<List<String>> lists) {
+        System.out.println("\n------------------------------------------------------------------------");
+        System.out.println(lists.get(1).get(1));
+        System.out.println(lists.get(2).get(1));
+        System.out.println("------------------------------------------------------------------------");
+    }
+
+
+
+
+
+
+
+
 
 
 }

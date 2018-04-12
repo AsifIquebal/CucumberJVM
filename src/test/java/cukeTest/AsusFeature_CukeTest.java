@@ -7,11 +7,13 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features="CucumberJVM/src/test/java/features/AsusFeature.feature",
-        //features = "src/test/java/features/mercury.feature",
-        // facing issue with feature file location
-        //features="src/test/java/features/GitHubTest.feature",
+        //features="CucumberJVM/src/test/java/features/AsusFeature.feature:41",
         glue = "stepDef",
-        plugin = {"pretty", "html:target/cucumber-reports"}
+        plugin = {"pretty", "html:target/cucumber-reports"},
+        monochrome = false,
+        //tags={"@dataTable,@demoX"} // OR example, Scenarios tagged with either of them
+        tags={"@dataTable","@demoY"} // AND example, Scenarios tagged with ALL of them
+
         /*dryRun = true,
         strict = true*/
         // use plugin instead, as format has been deprecated
@@ -25,7 +27,7 @@ import org.junit.runner.RunWith;
                 , "junit:FolderNam0e/cucumber.xml"
                 , "html:FolderName/cucumber.html"
         }*/
-        //tags={"@mercury"}
+
 )
 public class AsusFeature_CukeTest {
 }
