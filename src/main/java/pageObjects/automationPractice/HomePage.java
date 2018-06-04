@@ -12,8 +12,6 @@ public class HomePage {
 
     private final By searchBox = By.id("search_query_top");
     private final By searchButton = By.name("submit_search");
-    // items
-    // //ul[@class='product_list grid row']/li
 
     public HomePage(WebDriver driver) {
         this.driver = driver;

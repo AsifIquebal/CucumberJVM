@@ -38,7 +38,7 @@ public class AsusFeatureTest_StepDef{
 
     @Given("^user is on selenium practice home page$")
     public void user_on_Selenium_Practice_Page() {
-        String url = "http://localhost:63342/Selenium/CucumberJVM/selPractice.htm?_ijt=mbu7uh6u6o03f4jqni77i48clr";
+        String url = "http://localhost:63342/Selenium/CucumberJVM/automationPracticeParallel.htm?_ijt=mbu7uh6u6o03f4jqni77i48clr";
         driver.get(url);
 
     }
@@ -91,8 +91,6 @@ public class AsusFeatureTest_StepDef{
         List<List<String>> data = dataTable.raw();
         System.out.println(data.get(1).get(1));
         System.out.println(data);
-        
-
     }
 
     public static String OSDetector (){
