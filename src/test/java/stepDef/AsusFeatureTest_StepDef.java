@@ -31,7 +31,7 @@ public class AsusFeatureTest_StepDef {
     @After
     public void tearDown(Scenario scenario) {
         System.out.println("Scenarion: " + scenario.getName() + ", Status: " + scenario.getStatus());
-        //SingleTonBase.closeBrowser();
+        SingleTonBase.closeBrowser();
     }
 
     @Given("^user is on selenium practice home page$")
