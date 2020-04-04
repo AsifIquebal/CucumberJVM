@@ -1,18 +1,9 @@
 package stepDef.picoContainerDemo;
 
 import base.BaseUtil;
-import cucumber.api.DataTable;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
+import io.cucumber.java.en.Given;
 
-import java.util.List;
-
-public class StepDef1 /*extends BaseUtil*/{
+public class StepDef1 /*extends BaseUtil*/ {
 
     private BaseUtil base;
 
@@ -42,10 +33,6 @@ public class StepDef1 /*extends BaseUtil*/{
         base.driver.get(url);
 
     }
-
-
-
-
 
 
 }

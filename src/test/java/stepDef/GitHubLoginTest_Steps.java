@@ -1,12 +1,11 @@
 package stepDef;
 
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import pageObjects.gitHubPages.LoginPage;
-
 
 public class GitHubLoginTest_Steps {
 

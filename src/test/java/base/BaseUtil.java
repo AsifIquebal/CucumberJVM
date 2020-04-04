@@ -1,6 +1,6 @@
 package base;
 
-import cucumber.api.Scenario;
+import io.cucumber.java.Scenario;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 

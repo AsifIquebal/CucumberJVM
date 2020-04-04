@@ -1,15 +1,14 @@
 package stepDef;
 
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class Hook1{
+public class Hook1 {
 
     public WebDriver driver;
+
     //@Before
-    public void setUp(){
+    public void setUp() {
         System.out.println("Before HOOK");
         System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
         //System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
@@ -17,7 +16,7 @@ public class Hook1{
     }
 
     //@After
-    public void tearDown(){
+    public void tearDown() {
         System.out.println("After HOOK");
         driver.quit();
     }

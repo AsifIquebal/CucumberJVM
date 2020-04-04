@@ -1,23 +1,14 @@
 package stepDef;
 
-import cucumber.api.Scenario;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+import io.cucumber.java.Scenario;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.chrome.ChromeDriver;
-import utils.DriverFactory;
-
-import java.io.IOException;
 
 public class Hook {
 
     public WebDriver driver;
-    
+
     //@Before
-    public void setUp(Scenario scenario){
+    public void setUp(Scenario scenario) {
         System.out.println("Starting: " + scenario.getName());
         System.out.println("====================================================================");
     }
@@ -31,7 +22,7 @@ public class Hook {
     }
 
     //@After
-    public void tearDown(Scenario scenario){
+    public void tearDown(Scenario scenario) {
         //driver.quit();
         System.out.println("Ending: " + scenario.getName());
         System.out.println("====================================================================");

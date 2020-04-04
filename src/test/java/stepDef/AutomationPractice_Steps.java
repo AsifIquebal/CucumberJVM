@@ -1,14 +1,13 @@
 package stepDef;
 
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.testng.Assert;
-import pageObjects.SharedClass;
-import pageObjects.automationPractice.HomePage;
-import pageObjects.automationPractice.LoginPage;
-import pageObjects.automationPractice.MyAccount;
-import pageObjects.automationPractice.base.BaseClass;
+import pageObjects.applicationPages.HomePage;
+import pageObjects.applicationPages.LoginPage;
+import pageObjects.applicationPages.MyAccount;
+import pageObjects.applicationPages.base.BaseClass;
 
 public class AutomationPractice_Steps extends BaseClass{
 
