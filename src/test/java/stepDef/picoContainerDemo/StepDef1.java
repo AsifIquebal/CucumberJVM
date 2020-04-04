@@ -28,9 +28,8 @@ public class StepDef1 /*extends BaseUtil*/ {
 
     @Given("^run stepDefinition file 1$")
     public void user_on_Selenium_Practice_Page() {
-        String url = "http://localhost:63342/Selenium/CucumberJVM/automationPracticeParallel.htm?_ijt=mbu7uh6u6o03f4jqni77i48clr";
-        //driver.get(url);
-        base.driver.get(url);
+        String url = System.getProperty("user.dir") + "/src/main/resources/selPractice.htm";
+        base.driver.get("file://"+url);
 
     }
 

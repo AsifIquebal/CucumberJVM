@@ -15,7 +15,7 @@ public class GitHubLoginTest_Steps {
 
     @Given("^user opens git hub login page$")
     public void user_opens_GitHub_login_page() {
-        System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
+        System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver");
         driver = new FirefoxDriver();
         driver.get("https://github.com/login");
         //launchApplication();

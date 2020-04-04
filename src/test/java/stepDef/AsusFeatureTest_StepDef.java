@@ -31,15 +31,13 @@ public class AsusFeatureTest_StepDef {
     @After
     public void tearDown(Scenario scenario) {
         System.out.println("Scenarion: " + scenario.getName() + ", Status: " + scenario.getStatus());
-
-        SingleTonBase.closeBrowser();
+        //SingleTonBase.closeBrowser();
     }
 
     @Given("^user is on selenium practice home page$")
     public void user_on_Selenium_Practice_Page() {
-        String url = "http://localhost:63342/Selenium/CucumberJVM/automationPracticeParallel.htm?_ijt=mbu7uh6u6o03f4jqni77i48clr";
-        driver.get(url);
-
+        String url = System.getProperty("user.dir") + "/src/main/resources/selPractice.htm";
+        driver.get("file://"+url);
     }
 
     @Then("^user enters \"(.*?)\" on text box$")

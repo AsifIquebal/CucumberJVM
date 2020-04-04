@@ -10,7 +10,6 @@ public class SingleTonBase {
     private static WebDriver createDriver(){
         if (driver == null) {
             System.out.println("Driver Instance is null. Creating driver.");
-            //System.getProperty("user.dir") + "/src/main/resources/drivers/chromedriver";
             System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
             ChromeOptions options = new ChromeOptions();
             //options.setAcceptInsecureCerts(true);

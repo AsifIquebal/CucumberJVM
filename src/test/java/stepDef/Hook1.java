@@ -10,7 +10,7 @@ public class Hook1 {
     //@Before
     public void setUp() {
         System.out.println("Before HOOK");
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
         //System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
         driver = new ChromeDriver();
     }
