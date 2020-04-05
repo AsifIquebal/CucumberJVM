@@ -3,6 +3,7 @@ package stepDef;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.DataTableType;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -14,10 +15,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import singleTonBase.SingleTonBase;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class AsusFeatureTest_StepDef {
 
@@ -37,7 +35,7 @@ public class AsusFeatureTest_StepDef {
     @Given("^user is on selenium practice home page$")
     public void user_on_Selenium_Practice_Page() {
         String url = System.getProperty("user.dir") + "/src/main/resources/selPractice.htm";
-        driver.get("file://"+url);
+        driver.get("file://" + url);
     }
 
     @Then("^user enters \"(.*?)\" on text box$")
@@ -82,12 +80,67 @@ public class AsusFeatureTest_StepDef {
         driver.findElement(By.id("passWd")).sendKeys("" + value);
     }
 
+    @DataTableType
+    public Person definePerson(Map<String, String> entry) {
+        return new Person(entry.get("name"), entry.get("position"), entry.get("office"));
+    }
+
+    // here the headers will be the first row
+    /*@Then("^we verify following data exists$")
+    public void dataVerification(List<List<String>> entry) {
+        System.out.println(entry);
+    }*/
+
     @Then("^we verify following data exists$")
-    public void dataVerification(DataTable dataTable) {
-        // raw(): Returns a List of List of String.
-        //List<List<String>> data = dataTable.raw();
-        //System.out.println(data.get(1).get(1));
-        //System.out.println(data);
+    public void dataVerification(List<Map<String, String>> entry) {
+        for (Map<String, String> person : entry) {
+            person.forEach((k, v) -> System.out.println("Key = " + k + ", Value = " + v));
+        }
+    }
+
+    static class Person {
+        private String name;
+        private String position;
+        private String office;
+
+        public Person(String name, String position, String office) {
+            this.name = name;
+            this.position = position;
+            this.office = office;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getPosition() {
+            return position;
+        }
+
+        public void setPosition(String position) {
+            this.position = position;
+        }
+
+        public String getOffice() {
+            return office;
+        }
+
+        public void setOffice(String office) {
+            this.office = office;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Person person = (Person) o;
+            return Objects.equals(name, person.name);
+        }
+
     }
 
     public static String OSDetector() {
@@ -165,6 +218,5 @@ public class AsusFeatureTest_StepDef {
         System.out.println(lists.get(2).get(1));
         System.out.println("------------------------------------------------------------------------");
     }
-
 
 }
