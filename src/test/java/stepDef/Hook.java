@@ -15,19 +15,11 @@ public class Hook {
         System.out.println("Starting: " + scenario.getName());
         System.out.println("ID: " + scenario.getId());
         System.out.println("====================================================================");
-    }
-
-    //@Before
-    public void steUp() {
-        driver = SingleTonBase.getDriver();
-    }
-
-    //@Before
-    public void beforeScenario() {
+        //driver = SingleTonBase.getDriver();
         //System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
         //driver = new ChromeDriver();
         //driver = new DriverFactory().createDriver();
-        System.out.println("this will run before the actual scenario");
+        //System.out.println("this will run before the actual scenario");
     }
 
     @After
