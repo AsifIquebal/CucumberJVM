@@ -16,6 +16,7 @@ public class Hook {
         System.out.println("ID: " + scenario.getId());
         System.out.println("====================================================================");
     }
+
     //@Before
     public void steUp() {
         driver = SingleTonBase.getDriver();
