@@ -1,5 +1,6 @@
 package stepDef;
 
+import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.WebDriver;
 
@@ -7,7 +8,7 @@ public class Hook {
 
     public WebDriver driver;
 
-    //@Before
+    @Before
     public void setUp(Scenario scenario) {
         System.out.println("Starting: " + scenario.getName());
         System.out.println("====================================================================");
