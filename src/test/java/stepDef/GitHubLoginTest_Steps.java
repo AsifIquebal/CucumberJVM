@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import pageObjects.gitHubPages.LoginPage;
 
@@ -15,10 +16,9 @@ public class GitHubLoginTest_Steps {
 
     @Given("^user opens git hub login page$")
     public void user_opens_GitHub_login_page() {
-        System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver");
-        driver = new FirefoxDriver();
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
+        driver = new ChromeDriver();
         driver.get("https://github.com/login");
-        //launchApplication();
     }
 
     @Then("^user enters login id$")
