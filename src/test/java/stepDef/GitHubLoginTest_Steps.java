@@ -1,40 +1,52 @@
 package stepDef;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import io.cucumber.java.en.When;
+import org.junit.Assert;
+import pageObjects.base.BaseTest;
 import pageObjects.gitHubPages.LoginPage;
 
-public class GitHubLoginTest_Steps {
+public class GitHubLoginTest_Steps extends BaseTest {
 
-    private WebDriver driver;
     private LoginPage loginPage;
+
+    @Before
+    public void setUp() {
+        System.out.println("Just Experimenting...");
+    }
 
     @Given("^user opens git hub login page$")
     public void user_opens_GitHub_login_page() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.get("https://github.com/login");
-    }
-
-    @Then("^user enters login id$")
-    public void user_enters_login_id() {
-        loginPage = new LoginPage(driver);
-        loginPage.enterEmail("test@test.com");
-    }
-
-    @Then("^user enters password$")
-    public void user_enters_password() {
-        loginPage.enterPassword("test123");
+        getDriver().get("https://github.com/login");
     }
 
     @And("^user clicks on signin button$")
     public void user_clicks_on_signin_button() {
         loginPage.clickOnSignInButton();
-        driver.quit();
+    }
+
+    @Then("user getting unsuccessful login message")
+    public void userGettingUnsuccessfulLoginMessage() {
+        Assert.assertTrue("No Message Displayed...", loginPage.unsuccessfulLoginMessage().equalsIgnoreCase("Incorrect username or password."));
+    }
+
+    @When("user enters login id and password")
+    public void userEntersLoginIdAndPassword() {
+        loginPage = new LoginPage(getDriver());
+        loginPage.enterEmail("test@test.com");
+        loginPage.enterPassword("test123");
+    }
+
+    @After
+    public void tearDown() {
+        System.out.println("Hooks also have After, me too...");
+        if (getDriver() != null) {
+            getDriver().quit();
+        }
     }
 
 }

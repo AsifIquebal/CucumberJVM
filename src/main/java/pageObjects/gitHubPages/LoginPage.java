@@ -28,4 +28,9 @@ public class LoginPage {
         return this;
     }
 
+    private By unsuccessfulLoginMessageContainer = By.xpath("//div[@id='js-flash-container']");
+    public String unsuccessfulLoginMessage(){
+        return driver.findElement(unsuccessfulLoginMessageContainer).getText();
+    }
+
 }

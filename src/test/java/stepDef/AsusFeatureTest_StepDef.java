@@ -1,6 +1,6 @@
 package stepDef;
 
-import base.BaseTest;
+import pageObjects.base.BaseTest;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.And;

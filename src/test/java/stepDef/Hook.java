@@ -2,13 +2,10 @@ package stepDef;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.BeforeStep;
 import io.cucumber.java.Scenario;
-import org.openqa.selenium.WebDriver;
-import singleTonBase.SingleTonBase;
 
 public class Hook {
-
-    public WebDriver driver;
 
     @Before
     public void setUp(Scenario scenario) {
@@ -22,12 +19,13 @@ public class Hook {
         //System.out.println("this will run before the actual scenario");
     }
 
+    @BeforeStep
+    public void beforeStep() {
+        System.out.println("Call me before each step");
+    }
+
     @After
     public void tearDown(Scenario scenario) {
-        //driver.quit();
-        if (driver != null) {
-            driver.quit();
-        }
         System.out.println("Ending: " + scenario.getName());
         System.out.println("Status: " + scenario.getStatus());
         System.out.println("====================================================================");
