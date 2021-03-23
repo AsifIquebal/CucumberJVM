@@ -25,6 +25,9 @@ public class Hook {
     @After
     public void tearDown(Scenario scenario) {
         //driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
         System.out.println("Ending: " + scenario.getName());
         System.out.println("Status: " + scenario.getStatus());
         System.out.println("====================================================================");

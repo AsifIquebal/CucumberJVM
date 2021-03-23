@@ -10,9 +10,8 @@ import pageObjects.gitHubPages.LoginPage;
 
 public class GitHubLoginTest_Steps {
 
-    public WebDriver driver;
-    LoginPage loginPage;
-
+    private WebDriver driver;
+    private LoginPage loginPage;
 
     @Given("^user opens git hub login page$")
     public void user_opens_GitHub_login_page() {

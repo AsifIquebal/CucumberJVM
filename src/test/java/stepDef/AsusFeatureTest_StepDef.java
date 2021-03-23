@@ -1,51 +1,34 @@
 package stepDef;
 
+import base.BaseTest;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.DataTableType;
-import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
-import singleTonBase.SingleTonBase;
 
 import java.util.*;
 
-public class AsusFeatureTest_StepDef {
-
-    WebDriver driver;
-
-    @Before
-    public void steUp() {
-        driver = SingleTonBase.getDriver();
-    }
-
-    @After
-    public void tearDown(Scenario scenario) {
-        System.out.println("Scenarion: " + scenario.getName() + ", Status: " + scenario.getStatus());
-        SingleTonBase.closeBrowser();
-    }
+public class AsusFeatureTest_StepDef extends BaseTest {
 
     @Given("^user is on selenium practice home page$")
     public void user_on_Selenium_Practice_Page() {
         String url = System.getProperty("user.dir") + "/src/main/resources/selPractice.htm";
-        driver.get("file://" + url);
+        getDriver().get("file://" + url);
     }
 
     @Then("^user enters \"(.*?)\" on text box$")
     public void enter_text(String text) {
-        driver.findElement(By.id("textinput")).sendKeys(text);
+        getDriver().findElement(By.id("textinput")).sendKeys(text);
     }
 
     @Then("^user selects value from Select drop down$")
     public void selectValue() throws Exception {
-        Select dd = new Select(driver.findElement(By.name("PASAM")));
+        Select dd = new Select(getDriver().findElement(By.name("PASAM")));
         List<WebElement> ddl = dd.getOptions();
         for (int i = 0; i < ddl.size(); i++) {
             System.out.println("Dropdown: " + (i + 1) + " Option: " + ddl.get(i).getText() + " Status: " + ddl.get(i).isSelected());
@@ -54,30 +37,30 @@ public class AsusFeatureTest_StepDef {
         dd.selectByIndex(1);
         Thread.sleep(2000);
         dd.selectByIndex(ddl.size() - 1);
-        driver.findElement(By.xpath("//select[@id='PASAM1']/option[@value='amlu' and .='Amlan']")).click();
+        getDriver().findElement(By.xpath("//select[@id='PASAM1']/option[@value='amlu' and .='Amlan']")).click();
     }
 
     @Then("click on Home")
     public void clickHome() throws Exception {
-        WebElement homeLink = driver.findElement(By.xpath(".//a[contains(text(),'Home')]"));
-        Actions act1 = new Actions(driver);
+        WebElement homeLink = getDriver().findElement(By.xpath(".//a[contains(text(),'Home')]"));
+        Actions act1 = new Actions(getDriver());
         Thread.sleep(3000);
         act1.moveToElement(homeLink).perform();
+    }
+
+    @Then("^user enters \"(.*?)\" on username$")
+    public void setUserName(String text) {
+        getDriver().findElement(By.id("userId")).sendKeys(text);
+    }
+
+    @And("^user enters \"([0-9]*)\" on password$")
+    public void setPasswordName(int value) {
+        getDriver().findElement(By.id("passWd")).sendKeys("" + value);
     }
 
     @Then("^user wants to know the OS$")
     public void getOS() {
         System.out.println("OS is: " + OSDetector());
-    }
-
-    @Then("^user enters \"(.*?)\" on username$")
-    public void setUserName(String text) {
-        driver.findElement(By.id("userId")).sendKeys(text);
-    }
-
-    @And("^user enters \"([0-9]*)\" on password$")
-    public void setPasswordName(int value) {
-        driver.findElement(By.id("passWd")).sendKeys("" + value);
     }
 
     @DataTableType
@@ -187,7 +170,7 @@ public class AsusFeatureTest_StepDef {
     @Given("^I have been to : \"(.+)\" for work$")
     public void i_have_been_to_Kolkata_Bhubaneswar_Pune_for_work(List<String> list) {
         System.out.println("Places I've been");
-        list.forEach(elem -> System.out.println(elem));
+        list.forEach(System.out::println);
     }
 
     @Given("^the following datatable and convert to list$")
