@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         features="CucumberJVM/src/test/java/features/automationPractice.feature",
         //features = "src/test/java/features/mercury.feature",
         // facing issue with feature file location
-        //features="src/test/java/features/GitHubTest.feature",
+        //features="src/test/java/features/GitHub.feature",
         glue = "stepDef",
         plugin = {"pretty", "html:target/cucumber-reports"},
         dryRun = true,

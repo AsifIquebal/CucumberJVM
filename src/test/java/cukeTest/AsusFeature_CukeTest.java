@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
         //tags={"@dataTable,@demoX"} // OR example, Scenarios tagged with either of them
         //tags={"@dataTable","@demoY"}, // AND example, Scenarios tagged with ALL of them
         //tags={"@demo"},
-        tags={"@DT"},
+        //tags={"@DT"},
 
         /*dryRun = true,*/
         strict = true

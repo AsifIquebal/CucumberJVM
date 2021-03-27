@@ -33,7 +33,7 @@
                     <version>2.20</version>
                     <configuration>
                         <includes>
-                            <!--<include>GitHub_CukeTest.java</include>-->
+                            <include>GitHub_CukeTest.java</include>
                         </includes>
                     </configuration>
                 </plugin>
