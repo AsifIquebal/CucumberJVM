@@ -9,16 +9,17 @@ import org.junit.runner.RunWith;
         features = "src/test/java/features/GitHub.feature",
         strict = true,
         glue = "stepDef",
-        plugin = {"pretty", "html:target/cucumber-reports"}
+        plugin = {"pretty", "html:target/cucumber-reports"},
+        monochrome = true
         // use plugin instead, as format has been deprecated
         /*plugin = {"pretty", "json:FolderName/cucumber.json"}
-        plugin= {"pretty", "junit:FolderNam0e/cucumber.xml"}
+        plugin= {"pretty", "junit:FolderName/cucumber.xml"}
         plugin= {"pretty", "html:FolderName/cucumber.html"}
         plugin=
         {
                 "pretty"
                 , "json:FolderName/cucumber.json"
-                , "junit:FolderNam0e/cucumber.xml"
+                , "junit:FolderName/cucumber.xml"
                 , "html:FolderName/cucumber.html"
         }*/
         //tags={"@mercury"}
