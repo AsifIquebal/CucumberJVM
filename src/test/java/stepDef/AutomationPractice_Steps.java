@@ -9,21 +9,25 @@ import pageObjects.applicationPages.LoginPage;
 import pageObjects.applicationPages.MyAccount;
 import pageObjects.applicationPages.base.BaseClass;
 
-public class AutomationPractice_Steps extends BaseClass{
+public class AutomationPractice_Steps extends BaseClass {
 
     LoginPage loginPage;
     MyAccount myAccount;
     HomePage homePage;
 
+    @Given("User open browser and  navigates to {string}")
+    public void userOpenBrowserAndNavigatesTo(String arg0) {
+    }
+
     @Given("^user navigate to the application URL$")
-    public void user_navigate_to_the_application_URL() throws Throwable {
+    public void user_navigate_to_the_application_URL() {
         homePage = LaunchApplication();
     }
 
     @Then("^user opens Login Page$")
-    public void user_opens_Login_Page(){
+    public void user_opens_Login_Page() {
         loginPage = clickOnSignInLink();
-        Assert.assertEquals(getPageTitle(),"Login - My Store");
+        Assert.assertEquals(getPageTitle(), "Login - My Store");
     }
 
     @Then("^user enters \"([^\"]*)\" on Username$")
@@ -37,12 +41,12 @@ public class AutomationPractice_Steps extends BaseClass{
     }
 
     @Then("^user clicks on SignIn button$")
-    public void user_clicks_on_SignIn_button(){
+    public void user_clicks_on_SignIn_button() {
         myAccount = loginPage.clickOnSignInButton();
     }
 
     @Then("^user clicks on My Address section$")
-    public void user_clicks_on_My_Address_section(){
+    public void user_clicks_on_My_Address_section() {
         myAccount.ClickOnMyAddress();
     }
 
@@ -90,6 +94,11 @@ public class AutomationPractice_Steps extends BaseClass{
     public void user_get_product_as_result(String arg1) {
         System.out.println("Received value: " + arg1);
         // Write code here that turns the phrase above into concrete actions
+    }
+
+
+    @Then("go to {string}")
+    public void goTo(String arg0) {
     }
 
 
